@@ -6,3 +6,4 @@
 @media(max-width:1050px){.certificate-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.certificate-grid{grid-template-columns:1fr}}
 .certificate-grid .pdf-card{padding:0;justify-content:flex-start;background:white}.certificate-grid .pdf-card img{width:100%;height:240px;object-fit:contain;background:var(--soft)}.certificate-grid .pdf-card>span{margin-top:auto;width:100%;padding:15px}
+.entry time{font-size:14px;font-weight:500;letter-spacing:.055em}
