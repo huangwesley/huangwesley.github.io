@@ -1,23 +1,4 @@
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const sections = document.querySelectorAll(".timeline-item, .project-card, .about-grid, .section-heading");
-
-if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  sections.forEach((item) => {
-    item.style.opacity = "0";
-    item.style.transform = "translateY(24px)";
-    item.style.transition = "opacity .65s ease, transform .65s ease";
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  sections.forEach((item) => observer.observe(item));
-}
+const root=document.documentElement,button=document.querySelector('.lang'),nodes=document.querySelectorAll('[data-en][data-zh]');
+function language(lang){const zh=lang==='zh';root.classList.add('fade');setTimeout(()=>{root.lang=zh?'zh-Hant':'en';nodes.forEach(n=>n.textContent=n.dataset[zh?'zh':'en']);button.children[0].classList.toggle('active',!zh);button.children[2].classList.toggle('active',zh);document.title=zh?'黃暐宸｜人工智慧研究者':'Wesley Huang | AI Researcher';localStorage.setItem('portfolio-language',lang)},140);setTimeout(()=>root.classList.remove('fade'),310)}
+button.addEventListener('click',()=>language(root.lang==='en'?'zh':'en'));language(localStorage.getItem('portfolio-language')||'en');document.getElementById('year').textContent=new Date().getFullYear();
+if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches)document.querySelectorAll('.magnetic').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`translate(${x*7}px,${y*5}px) scaleX(1.045)`});el.addEventListener('pointerleave',()=>el.style.transform='');el.addEventListener('pointerdown',()=>el.style.transform+=' scale(.97)')});
